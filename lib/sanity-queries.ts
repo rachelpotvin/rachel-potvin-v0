@@ -2,13 +2,12 @@ import { client } from "./sanity-client"
 
 export async function getBio() {
   try {
-    // Query that fetches the bio content, keeping the rich text format intact
-    const query = `*[_type == "author"][0]{
+    // Query to fetch a single bio document with name, title, image, and bio fields
+    const query = `*[_type == "bio"][0]{
       name,
       title,
-      "summary": bio,
       image,
-      socialLinks[]{ platform, url }
+      bio
     }`
 
     return await client.fetch(query)

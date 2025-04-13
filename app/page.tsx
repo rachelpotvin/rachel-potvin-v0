@@ -3,15 +3,8 @@ import Bio from "@/components/bio"
 import TalksList from "@/components/talks-list"
 
 export default async function HomePage() {
-  let bio = []
-  let talks = []
-
-  try {
-    bio = await getBio()
-    talks = await getTalks()
-  } catch (error) {
-    console.error("Error fetching data from Sanity:", error)
-  }
+  const bio = await getBio()
+  const talks = await getTalks()
 
   return (
     <main className="min-h-screen bg-white">
@@ -22,3 +15,4 @@ export default async function HomePage() {
     </main>
   )
 }
+
