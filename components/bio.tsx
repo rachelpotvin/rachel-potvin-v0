@@ -1,14 +1,28 @@
 import type React from "react"
 import Image from "next/image"
 import { PortableText } from "@portabletext/react"
+import { Linkedin } from "lucide-react"
 import { urlForImage } from "@/lib/sanity-image"
 import type { SanityImageValue } from "@sanity/image-url/lib/types/types"
+
+interface SocialLink {
+  platform: string
+  url: string
+}
 
 interface BioData {
   name?: string
   title?: string
   bio?: any
   image?: SanityImageValue
+  linkedin?: string
+  socialLinks?: SocialLink[]
+  social?: {
+    linkedin?: string
+  }
+  contact?: {
+    linkedin?: string
+  }
 }
 
 interface BioProps {
@@ -63,11 +77,33 @@ export default function Bio({ bio }: BioProps) {
     )
   }
 
+  // Find LinkedIn URL from various possible locations in the schema
+  const linkedinUrl =
+    bio.linkedin ||
+    bio.social?.linkedin ||
+    bio.contact?.linkedin ||
+    bio.socialLinks?.find(
+      (link) => link.platform.toLowerCase() === "linkedin" || link.platform.toLowerCase() === "linked in",
+    )?.url
+
   return (
     <section className="mb-16">
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold mb-2">{bio.name || "Name"}</h1>
-        <p className="text-lg text-gray-600">{bio.title || "Title"}</p>
+        <p className="text-lg text-gray-600 mb-2">{bio.title || "Title"}</p>
+
+        {linkedinUrl && (
+          <a
+            href={linkedinUrl.startsWith("http") ? linkedinUrl : `https://${linkedinUrl}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition-colors mt-2"
+            aria-label="LinkedIn Profile"
+          >
+            <Linkedin className="h-5 w-5" />
+            <span className="text-sm">LinkedIn Profile</span>
+          </a>
+        )}
       </div>
 
       <div className="flex flex-col items-center gap-8">

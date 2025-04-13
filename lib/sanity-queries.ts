@@ -2,12 +2,23 @@ import { client } from "./sanity-client"
 
 export async function getBio() {
   try {
-    // Query to fetch a single bio document with name, title, image, and bio fields
+    // Updated query to fetch LinkedIn profile along with other bio data
     const query = `*[_type == "bio"][0]{
       name,
       title,
       image,
-      bio
+      bio,
+      linkedin,
+      "socialLinks": socialLinks[] {
+        platform,
+        url
+      },
+      "social": social {
+        linkedin
+      },
+      "contact": contact {
+        linkedin
+      }
     }`
 
     return await client.fetch(query)
