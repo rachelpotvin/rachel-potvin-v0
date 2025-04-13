@@ -3,7 +3,7 @@ import Bio from "@/components/bio"
 import TalksList from "@/components/talks-list"
 
 export default async function HomePage() {
-  let bio = null
+  let bio = []
   let talks = []
 
   try {
