@@ -19,7 +19,7 @@ export default function TalksList({ talks = [] }: TalksListProps) {
   if (!talks || talks.length === 0) {
     return (
       <section>
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 pb-4 border-b">Conference Talks and Podcasts</h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 pb-4 border-b">Conferences and Podcasts</h2>
         <p className="text-gray-500">No talks found. Add some talks in your Sanity studio.</p>
       </section>
     )
