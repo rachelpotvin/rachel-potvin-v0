@@ -27,7 +27,7 @@ export default function TalksList({ talks = [] }: TalksListProps) {
 
   return (
     <section>
-      <h2 className="text-2xl md:text-3xl font-bold mb-8 pb-4 border-b">Conference Talks and Podcasts</h2>
+      <h2 className="text-2xl md:text-3xl font-bold mb-8 pb-4 border-b">Conferences and Podcasts</h2>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {talks.map((talk) => (
           <TalkCard key={talk._id} talk={talk} />
