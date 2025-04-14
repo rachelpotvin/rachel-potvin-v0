@@ -75,7 +75,7 @@ export default function TalkCard({ talk, index }: { talk: Talk; index: number })
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium group"
           >
-            <span>Watch Video</span>
+            <span>Link</span>
             <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         ) : null}
