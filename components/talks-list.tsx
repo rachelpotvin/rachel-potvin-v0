@@ -21,7 +21,7 @@ export default function TalksList({ talks = [] }: TalksListProps) {
     <section className="animate-in delay-300">
       <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">Conference Talks and Podcasts</h2>
       <p className="text-xl text-gray-300 mb-12 max-w-2xl">
-        A collection of my presentations, conference talks, and podcast appearances.
+        A collection of my conference talks and podcast appearances.
       </p>
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {talks.map((talk, index) => (
