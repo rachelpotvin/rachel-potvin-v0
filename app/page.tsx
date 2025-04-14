@@ -7,12 +7,19 @@ export default async function HomePage() {
   const talks = await getTalks()
 
   return (
-    <main className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-12 md:py-24">
-        <Bio bio={bio} />
-        <TalksList talks={talks} />
+    <main className="min-h-screen pt-16">
+      {" "}
+      {/* Added pt-16 to account for fixed header */}
+      <div className="hero-pattern">
+        <div className="container mx-auto px-4 py-16 md:py-24">
+          <Bio bio={bio} />
+        </div>
+      </div>
+      <div className="bg-secondary">
+        <div className="container mx-auto px-4 py-16 md:py-24" id="talks">
+          <TalksList talks={talks} />
+        </div>
       </div>
     </main>
   )
 }
-
