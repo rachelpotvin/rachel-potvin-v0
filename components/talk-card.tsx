@@ -15,11 +15,35 @@ const ptComponents = {
 }
 
 export default function TalkCard({ talk, index }: { talk: Talk; index: number }) {
+  // If there's no video URL, make the card non-clickable
+  const hasVideoUrl = !!talk.videoUrl
+
+  // Wrapper component - either a div or an anchor depending on if there's a video URL
+  const CardWrapper = ({ children }: { children: React.ReactNode }) => {
+    if (!hasVideoUrl) {
+      return (
+        <div className="talk-card relative bg-card rounded-lg overflow-hidden shadow-md border border-gray-800 hover:border-gray-700 transition-all duration-300">
+          {children}
+        </div>
+      )
+    }
+
+    return (
+      <a
+        href={talk.videoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="talk-card relative bg-card rounded-lg overflow-hidden shadow-md border border-gray-800 hover:border-gray-700 transition-all duration-300 block cursor-pointer"
+        style={{ animationDelay: `${(index + 1) * 0.1}s` }}
+        aria-label={`Watch ${talk.title} video`}
+      >
+        {children}
+      </a>
+    )
+  }
+
   return (
-    <div
-      className="talk-card relative bg-card rounded-lg overflow-hidden shadow-md border border-gray-800 hover:border-gray-700 transition-all duration-300"
-      style={{ animationDelay: `${(index + 1) * 0.1}s` }}
-    >
+    <CardWrapper>
       <div className="relative aspect-[16/9] w-full bg-gray-900 overflow-hidden">
         {talk.image ? (
           <div className="card-image w-full h-full">
@@ -68,18 +92,13 @@ export default function TalkCard({ talk, index }: { talk: Talk; index: number })
           </div>
         )}
 
-        {talk.videoUrl && (
-          <a
-            href={talk.videoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium group"
-          >
+        {hasVideoUrl && (
+          <div className="flex items-center gap-2 text-primary font-medium">
             <span>Watch Video</span>
-            <ExternalLink className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+            <ExternalLink className="h-4 w-4" />
+          </div>
         )}
       </div>
-    </div>
+    </CardWrapper>
   )
 }
