@@ -10,6 +10,9 @@ export default function Header() {
         {/* Right side - navigation links and connect button */}
         <div className="flex items-center gap-6">
           <nav className="hidden md:flex items-center gap-6">
+            <Link href="#" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors">
+              Home
+            </Link>
             <Link href="#talks" className="text-sm font-medium text-gray-300 hover:text-primary transition-colors">
               Talks
             </Link>

@@ -7,6 +7,7 @@ export interface Talk {
   date: string
   image: SanityImageValue
   videoUrl?: string
+  link?: string
   conference?: string
   location?: string
 }

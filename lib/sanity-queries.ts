@@ -28,6 +28,7 @@ export async function getBio() {
   }
 }
 
+// Update the getTalks query to include the link field
 export async function getTalks() {
   try {
     const query = `*[_type == "talk"] | order(date desc) {
@@ -37,6 +38,7 @@ export async function getTalks() {
       date,
       image,
       videoUrl,
+      link,
       conference,
       location
     }`
